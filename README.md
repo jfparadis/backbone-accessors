@@ -47,7 +47,7 @@ This approach is inspired by [Propel](http://propelorm.org), an Object-Relationa
 	// model.set('id', 10);
     model.setId(10);
 	```
-Note: you can mix both types of accesors. 
+Note: you can mix both types of accesors.
 
 
 ## Justification
@@ -67,20 +67,20 @@ var Constants = {
 		firstName 	: 'firstName',
 		lastName 	: 'lastName'
 	}
-}
+};
 
 model.set(Constants.NameModel.firstName, name); // 'firstName' is gone
 ```
 While intended to generate an error if there is a typo in `Constants.NameModel.firstName`, this approach will fail silently if the last identifier of the notation (in practice the most complex) has a mistake in it:
 
-```
+```javascript
 model.get(Constants.NameModel.firstNaame); // return 'undefined', no error
 model.set(Constants.NameModel.firstNaame, name); // no error
 ```
 
 On the other hand, with accessors, there is less code to type, no constant file to carry around, and the code will immediately fail (fail hard) if there is a typo in the variable name:
 
-```
+```javascript
 model.getFirstNaame(); // runtime error
 model.setFirstNaame(name); // runtime error
 ```
