@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Backbone Accessors</title>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
+    <script src="../backbone.accessors.js"></script>
+  </head>
+
+    <body>
+
+        <h1>Examples of accessors</h1>
+
+
+        <pre>
+
+            var Model = Backbone.Model.extend({
+
+                defaults: {
+                    firstName   : 'Jack',
+                    lastName    : 'Nobody'
+                },
+
+            });
+
+            Backbone.accessors.apply(Model);
+
+            var model = new Model();
+
+            model.getFirstName();
+            >>> <span id="test-1"></span>
+
+            model.setFirstName('Mary');
+            model.getFirstName();
+            >>> <span id="test-2"></span>
+
+            model.hasFirstName();
+            >>> <span id="test-3"></span>
+
+            model.unsetFirstName();
+            model.hasFirstName();
+            >>> <span id="test-4"></span>
+        </pre>
+
+        <script>
+        $(function() {
+            var Model = Backbone.Model.extend({
+
+                defaults: {
+                    firstName   : 'Jack',
+                    lastName    : 'Nobody'
+                },
+
+            });
+
+            Backbone.accessors.apply(Model);
+
+            var model = new Model();
+
+            // Get
+            $('#test-1').append(model.getFirstName());
+
+            // Set
+            model.setFirstName('Mary');
+            $('#test-2').append(model.getFirstName());
+
+            // Has
+            $('#test-3').append(model.hasFirstName());
+
+            // Unset
+            model.unsetFirstName();
+            $('#test-4').append(model.hasFirstName());
+
+
+        });
+        </script>
+    </body>
+
+</html>
